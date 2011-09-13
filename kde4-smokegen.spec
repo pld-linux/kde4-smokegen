@@ -1,23 +1,18 @@
 %define         _state          stable
-%define         orgname         smokeqt
+%define         orgname         smokegen
 %define         qtver           4.7.4
 
-Summary:	smokeqt - A SMOKE library
-Summary(pl.UTF-8):	smokeqt - Biblioteka SMOKE
-Name:		smokeqt
+Summary:	smokegen - A SMOKE library
+Summary(pl.UTF-8):	smokegen - Biblioteka SMOKE
+Name:		smokegen
 Version:	4.7.1
-Release:	2
+Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	147d73b6f05105ebacd4d8c2f316254c
+# Source0-md5:	b346f945d559e47dd6fcef8c7e8dcc71
 URL:		http://www.kde.org/
 BuildRequires:	kde4-kdelibs-devel
-BuildRequires:	phonon-devel
-BuildRequires:	qimageblitz-devel
-BuildRequires:	qscintilla2-devel
-BuildRequires:	qwt-devel
-BuildRequires:	smokegen-devel >= %{version}
 Obsoletes:	kde4-kdebindings-smoke-qt < 4.7.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -33,7 +28,6 @@ Summary:	Header files for %{name} library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki %{name}
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	smokegen-devel >= %{version}
 Obsoletes:	kde4-kdebindings-smoke-devel < 4.7.0
 
 %description devel
@@ -67,13 +61,19 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS
-%attr(755,root,root) %{_libdir}/libsmoke*.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libsmoke*.so.?
+%doc AUTHORS ChangeLog NEWS README
+%attr(755,root,root) %{_bindir}/smokeapi
+%attr(755,root,root) %{_bindir}/smokegen
+%attr(755,root,root) %{_libdir}/libcppparser.so
+%attr(755,root,root) %{_libdir}/libsmokebase.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libsmokebase.so.?
+%dir %{_libdir}/smokegen
+%attr(755,root,root) %{_libdir}/smokegen/*.so
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/smoke
-%{_datadir}/smokegen/qt-config.xml
-%{_datadir}/smokegen/qtdefines
-%attr(755,root,root) %{_libdir}/libsmoke*.so
+%{_includedir}/smoke.h
+%{_includedir}/smokegen
+%{_datadir}/smoke
+%{_datadir}/smokegen
+%attr(755,root,root) %{_libdir}/libsmokebase.so
