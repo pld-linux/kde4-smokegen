@@ -6,7 +6,7 @@ Summary:	smokeqt - A SMOKE library
 Summary(pl.UTF-8):	smokeqt - Biblioteka SMOKE
 Name:		smokeqt
 Version:	4.7.1
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
@@ -67,14 +67,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS
 %attr(755,root,root) %{_libdir}/libsmoke*.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libsmoke*.so.?
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/smoke/p*.h
-%{_includedir}/smoke/q*.h
+%{_includedir}/smoke
 %{_datadir}/smokegen/qt-config.xml
 %{_datadir}/smokegen/qtdefines
 %attr(755,root,root) %{_libdir}/libsmoke*.so
