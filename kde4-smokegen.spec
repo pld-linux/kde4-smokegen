@@ -6,7 +6,7 @@ Summary:	smokegen - A SMOKE library
 Summary(pl.UTF-8):	smokegen - Biblioteka SMOKE
 Name:		smokegen
 Version:	4.7.1
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
@@ -61,7 +61,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS README
 %attr(755,root,root) %{_bindir}/smokeapi
 %attr(755,root,root) %{_bindir}/smokegen
 %attr(755,root,root) %{_libdir}/libcppparser.so
