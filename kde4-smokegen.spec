@@ -6,7 +6,7 @@ Summary:	smokegen - A SMOKE library
 Summary(pl.UTF-8):	smokegen - Biblioteka SMOKE
 Name:		smokegen
 Version:	4.7.1
-Release:	3
+Release:	4
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
@@ -14,7 +14,7 @@ Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version
 Patch0:		%{name}-hack.patch
 URL:		http://www.kde.org/
 BuildRequires:	kde4-kdelibs-devel
-Obsoletes:	kde4-kdebindings-smoke-qt < 4.7.0
+Obsoletes:	kde4-kdebindings-smoke-qt < 4.6.99
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -29,7 +29,7 @@ Summary:	Header files for %{name} library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki %{name}
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Obsoletes:	kde4-kdebindings-smoke-devel < 4.7.0
+Obsoletes:	kde4-kdebindings-smoke-devel < 4.6.99
 
 %description devel
 Header files for %{name} library.
