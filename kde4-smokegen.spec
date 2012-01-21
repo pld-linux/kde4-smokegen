@@ -1,20 +1,19 @@
 %define         _state          stable
 %define         orgname         smokegen
-%define         qtver           4.7.4
+%define         qtver           4.8.0
 
 Summary:	smokegen - A SMOKE library
 Summary(pl.UTF-8):	smokegen - Biblioteka SMOKE
-Name:		smokegen
-Version:	4.7.3
+Name:		kde4-smokegen
+Version:	4.8.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	3927fd6a73a3c95bdb35c4d31024dc59
-Patch0:		%{name}-hack.patch
-URL:		http://www.kde.org/
+# Source0-md5:	8f3b232945720bf7c23239f4a1b2737d
 BuildRequires:	kde4-kdelibs-devel
 Obsoletes:	kde4-kdebindings-smoke-qt < 4.6.99
+Obsoletes:	smokegen <= 4.8.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -30,6 +29,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki %{name}
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Obsoletes:	kde4-kdebindings-smoke-devel < 4.6.99
+Obsoletes:	smokegen-devel <= 4.8.0
 
 %description devel
 Header files for %{name} library.
@@ -38,8 +38,7 @@ Header files for %{name} library.
 Pliki nagłówkowe biblioteki %{name}.
 
 %prep
-%setup -q
-%patch0 -p0
+%setup -q -n %{orgname}-%{version}
 
 %build
 install -d build
