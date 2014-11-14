@@ -5,12 +5,12 @@
 Summary:	smokegen - A SMOKE library
 Summary(pl.UTF-8):	smokegen - Biblioteka SMOKE
 Name:		kde4-smokegen
-Version:	4.14.2
+Version:	4.14.3
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/%{_state}/%{version}/src/%{orgname}-%{version}.tar.xz
-# Source0-md5:	c5074349e994a928b8d55f5efc2fe8e8
+# Source0-md5:	2689a2a1a30f48112eb181960ecee158
 BuildRequires:	kde4-kdelibs-devel
 Obsoletes:	kde4-kdebindings-smoke-qt < 4.6.99
 Obsoletes:	smokegen <= 4.8.0
