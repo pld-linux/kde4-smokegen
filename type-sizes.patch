@@ -1,0 +1,56 @@
+--- smokegen-4.14.3/generators/smoke/generator_smoke.cpp~	2014-09-15 17:53:01.000000000 +0000
++++ smokegen-4.14.3/generators/smoke/generator_smoke.cpp	2015-04-06 15:56:55.017032882 +0000
+@@ -230,6 +230,19 @@
+         Util::typeMap["size_t"] = "uint";
+     } else if (sizeof(unsigned long) == sizeof(size_t)) {
+         Util::typeMap["size_t"] = "ulong";
++    } else if (sizeof(unsigned long long) == sizeof(size_t)) {
++        Util::typeMap["size_t"] = "ullong";
++    }
++
++    if (sizeof(unsigned int) == sizeof(time_t)) {
++        Util::typeMap["time_t"] = "uint";
++        Util::typeMap["__time_t"] = "uint";
++    } else if (sizeof(unsigned long) == sizeof(time_t)) {
++        Util::typeMap["time_t"] = "ulong";
++        Util::typeMap["__time_t"] = "ulong";
++    } else if (sizeof(unsigned long long) == sizeof(time_t)) {
++        Util::typeMap["time_t"] = "ullong";
++        Util::typeMap["__time_t"] = "ullong";
+     }
+ 
+     qDebug() << "Generating SMOKE sources...";
+--- smokegen-4.14.3/generatorpreprocessor.cpp~	2014-09-15 17:53:01.000000000 +0000
++++ smokegen-4.14.3/generatorpreprocessor.cpp	2015-04-06 16:53:53.003384162 +0000
+@@ -79,12 +79,30 @@
+     exportMacro->variadics = false;
+     m_topBlock->setMacro(exportMacro);
+ 
+-#if defined(Q_OS_DARWIN64)
++#if defined(Q_OS_DARWIN64) || (defined(Q_OS_LINUX) && defined(__LP64__) && defined(__x86_64__))
+     exportMacro = new rpp::pp_macro;
+     exportMacro->name = IndexedString("__LP64__");
+     exportMacro->function_like = false;
+     exportMacro->variadics = false;
+     m_topBlock->setMacro(exportMacro);
++    exportMacro = new rpp::pp_macro;
++    exportMacro->name = IndexedString("__x86_64__");
++    exportMacro->function_like = false;
++    exportMacro->variadics = false;
++    m_topBlock->setMacro(exportMacro);
++#endif
++
++#if defined(Q_OS_LINUX) && defined(__ILP32__) && defined(__x86_64__)
++    exportMacro = new rpp::pp_macro;
++    exportMacro->name = IndexedString("__ILP32__");
++    exportMacro->function_like = false;
++    exportMacro->variadics = false;
++    m_topBlock->setMacro(exportMacro);
++    exportMacro = new rpp::pp_macro;
++    exportMacro->name = IndexedString("__x86_64__");
++    exportMacro->function_like = false;
++    exportMacro->variadics = false;
++    m_topBlock->setMacro(exportMacro);
+ #endif
+ 
+ #if (defined(QT_ARCH_ARM) || defined (QT_ARCH_ARMV6)) && !defined(QT_NO_ARM_EABI)
